@@ -1,0 +1,270 @@
+<?xml version="1.0" ?>
+<bom xmlns="http://cyclonedx.org/schema/bom/1.6" serialNumber="urn:uuid:2b86ae08-020c-42c0-b713-427968a7453e"
+     version="1">
+  <metadata>
+    <timestamp>2025-02-23T21:57:17.725307+00:00</timestamp>
+  </metadata>
+  <vulnerabilities>
+    <vulnerability bom-ref="BomRef.14910029604502706.08242402038161278">
+      <id>CVE-2017-18640</id>
+      <ratings>
+        <rating>
+          <source>
+            <url>mailto:nvd@nist.gov</url>
+          </source>
+          <score>7.5</score>
+          <severity>high</severity>
+          <method>CVSSv31</method>
+          <vector>CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H</vector>
+        </rating>
+        <rating>
+          <source>
+            <url>mailto:nvd@nist.gov</url>
+          </source>
+          <score>5.0</score>
+          <severity>medium</severity>
+          <method>CVSSv2</method>
+          <vector>AV:N/AC:L/Au:N/C:N/I:N/A:P</vector>
+        </rating>
+      </ratings>
+      <cwes>
+        <cwe>776</cwe>
+      </cwes>
+      <description>The Alias feature in SnakeYAML before 1.26 allows entity expansion during a load operation, a related
+        issue to CVE-2003-1564.
+      </description>
+      <published>2019-12-12T03:15:10.850000+01:00</published>
+      <updated>2024-11-21T03:20:32.813000+01:00</updated>
+    </vulnerability>
+    <vulnerability bom-ref="BomRef.4333964970476696.3843156257585567">
+      <id>CVE-2022-1471</id>
+      <ratings>
+        <rating>
+          <source>
+            <url>mailto:nvd@nist.gov</url>
+          </source>
+          <score>9.8</score>
+          <severity>critical</severity>
+          <method>CVSSv31</method>
+          <vector>CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H</vector>
+        </rating>
+        <rating>
+          <source>
+            <url>mailto:cve-coordination@google.com</url>
+          </source>
+          <score>8.3</score>
+          <severity>high</severity>
+          <method>CVSSv31</method>
+          <vector>CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:L</vector>
+        </rating>
+      </ratings>
+      <cwes>
+        <cwe>20</cwe>
+        <cwe>502</cwe>
+      </cwes>
+      <description>SnakeYaml's Constructor() class does not restrict types which can be instantiated during
+        deserialization. Deserializing yaml content provided by an attacker can lead to remote code execution. We
+        recommend using SnakeYaml's SafeConsturctor when parsing untrusted content to restrict deserialization. We
+        recommend upgrading to version 2.0 and beyond.
+      </description>
+      <published>2022-12-01T11:15:10.553000+01:00</published>
+      <updated>2025-02-13T17:15:35.627000+01:00</updated>
+    </vulnerability>
+    <vulnerability bom-ref="BomRef.7366081729628101.8280435834472266">
+      <id>CVE-2022-25857</id>
+      <ratings>
+        <rating>
+          <source>
+            <url>mailto:report@snyk.io</url>
+          </source>
+          <score>7.5</score>
+          <severity>high</severity>
+          <method>CVSSv31</method>
+          <vector>CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H</vector>
+        </rating>
+        <rating>
+          <source>
+            <url>mailto:nvd@nist.gov</url>
+          </source>
+          <score>7.5</score>
+          <severity>high</severity>
+          <method>CVSSv31</method>
+          <vector>CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H</vector>
+        </rating>
+      </ratings>
+      <cwes>
+        <cwe>776</cwe>
+      </cwes>
+      <description>The package org.yaml:snakeyaml from 0 and before 1.31 are vulnerable to Denial of Service (DoS) due
+        missing to nested depth limitation for collections.
+      </description>
+      <published>2022-08-30T05:15:07.667000+02:00</published>
+      <updated>2024-11-21T06:53:07.563000+01:00</updated>
+    </vulnerability>
+    <vulnerability bom-ref="BomRef.9230500431713615.301338592732986">
+      <id>CVE-2022-38749</id>
+      <ratings>
+        <rating>
+          <source>
+            <url>mailto:nvd@nist.gov</url>
+          </source>
+          <score>6.5</score>
+          <severity>medium</severity>
+          <method>CVSSv31</method>
+          <vector>CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:N/I:N/A:H</vector>
+        </rating>
+        <rating>
+          <source>
+            <url>mailto:cve-coordination@google.com</url>
+          </source>
+          <score>6.5</score>
+          <severity>medium</severity>
+          <method>CVSSv31</method>
+          <vector>CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:N/I:N/A:H</vector>
+        </rating>
+      </ratings>
+      <cwes>
+        <cwe>121</cwe>
+        <cwe>787</cwe>
+      </cwes>
+      <description>Using snakeYAML to parse untrusted YAML files may be vulnerable to Denial of Service attacks (DOS).
+        If the parser is running on user supplied input, an attacker may supply content that causes the parser to crash
+        by stackoverflow.
+      </description>
+      <published>2022-09-05T10:15:09.673000+02:00</published>
+      <updated>2024-11-21T07:17:01.060000+01:00</updated>
+    </vulnerability>
+    <vulnerability bom-ref="BomRef.8506898302309093.3870854439647734">
+      <id>CVE-2022-38750</id>
+      <ratings>
+        <rating>
+          <source>
+            <url>mailto:nvd@nist.gov</url>
+          </source>
+          <score>5.5</score>
+          <severity>medium</severity>
+          <method>CVSSv31</method>
+          <vector>CVSS:3.1/AV:L/AC:L/PR:N/UI:R/S:U/C:N/I:N/A:H</vector>
+        </rating>
+        <rating>
+          <source>
+            <url>mailto:cve-coordination@google.com</url>
+          </source>
+          <score>6.5</score>
+          <severity>medium</severity>
+          <method>CVSSv31</method>
+          <vector>CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:N/I:N/A:H</vector>
+        </rating>
+      </ratings>
+      <cwes>
+        <cwe>121</cwe>
+        <cwe>787</cwe>
+      </cwes>
+      <description>Using snakeYAML to parse untrusted YAML files may be vulnerable to Denial of Service attacks (DOS).
+        If the parser is running on user supplied input, an attacker may supply content that causes the parser to crash
+        by stackoverflow.
+      </description>
+      <published>2022-09-05T10:15:09.733000+02:00</published>
+      <updated>2024-11-21T07:17:01.207000+01:00</updated>
+    </vulnerability>
+    <vulnerability bom-ref="BomRef.8650474191778279.8566142062869567">
+      <id>CVE-2022-38751</id>
+      <ratings>
+        <rating>
+          <source>
+            <url>mailto:nvd@nist.gov</url>
+          </source>
+          <score>6.5</score>
+          <severity>medium</severity>
+          <method>CVSSv31</method>
+          <vector>CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:N/I:N/A:H</vector>
+        </rating>
+        <rating>
+          <source>
+            <url>mailto:cve-coordination@google.com</url>
+          </source>
+          <score>6.5</score>
+          <severity>medium</severity>
+          <method>CVSSv31</method>
+          <vector>CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:N/I:N/A:H</vector>
+        </rating>
+      </ratings>
+      <cwes>
+        <cwe>121</cwe>
+        <cwe>787</cwe>
+      </cwes>
+      <description>Using snakeYAML to parse untrusted YAML files may be vulnerable to Denial of Service attacks (DOS).
+        If the parser is running on user supplied input, an attacker may supply content that causes the parser to crash
+        by stackoverflow.
+      </description>
+      <published>2022-09-05T10:15:09.793000+02:00</published>
+      <updated>2024-11-21T07:17:01.357000+01:00</updated>
+    </vulnerability>
+    <vulnerability bom-ref="BomRef.42243143023433727.7048788828968515">
+      <id>CVE-2022-38752</id>
+      <ratings>
+        <rating>
+          <source>
+            <url>mailto:nvd@nist.gov</url>
+          </source>
+          <score>6.5</score>
+          <severity>medium</severity>
+          <method>CVSSv31</method>
+          <vector>CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:N/I:N/A:H</vector>
+        </rating>
+        <rating>
+          <source>
+            <url>mailto:cve-coordination@google.com</url>
+          </source>
+          <score>6.5</score>
+          <severity>medium</severity>
+          <method>CVSSv31</method>
+          <vector>CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:N/I:N/A:H</vector>
+        </rating>
+      </ratings>
+      <cwes>
+        <cwe>121</cwe>
+        <cwe>787</cwe>
+      </cwes>
+      <description>Using snakeYAML to parse untrusted YAML files may be vulnerable to Denial of Service attacks (DOS).
+        If the parser is running on user supplied input, an attacker may supply content that causes the parser to crash
+        by stack-overflow.
+      </description>
+      <published>2022-09-05T10:15:09.847000+02:00</published>
+      <updated>2024-11-21T07:17:01.483000+01:00</updated>
+    </vulnerability>
+    <vulnerability bom-ref="BomRef.9163236227518109.29273024236253253">
+      <id>CVE-2022-41854</id>
+      <ratings>
+        <rating>
+          <source>
+            <url>mailto:cve-coordination@google.com</url>
+          </source>
+          <score>5.8</score>
+          <severity>medium</severity>
+          <method>CVSSv31</method>
+          <vector>CVSS:3.1/AV:N/AC:H/PR:L/UI:R/S:C/C:N/I:N/A:H</vector>
+        </rating>
+        <rating>
+          <source>
+            <url>mailto:nvd@nist.gov</url>
+          </source>
+          <score>6.5</score>
+          <severity>medium</severity>
+          <method>CVSSv31</method>
+          <vector>CVSS:3.1/AV:N/AC:L/PR:N/UI:R/S:U/C:N/I:N/A:H</vector>
+        </rating>
+      </ratings>
+      <cwes>
+        <cwe>121</cwe>
+        <cwe>787</cwe>
+      </cwes>
+      <description>Those using Snakeyaml to parse untrusted YAML files may be vulnerable to Denial of Service attacks
+        (DOS). If the parser is running on user supplied input, an attacker may supply content that causes the parser to
+        crash by stack overflow. This effect may support a denial of service attack.
+      </description>
+      <published>2022-11-11T13:15:11.003000+01:00</published>
+      <updated>2024-11-21T07:23:56.797000+01:00</updated>
+    </vulnerability>
+  </vulnerabilities>
+</bom>

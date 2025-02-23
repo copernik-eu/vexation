@@ -1,0 +1,2 @@
+cyclonedx-python-lib>=8.8.0
+nvd-client>=0.1.3.1
