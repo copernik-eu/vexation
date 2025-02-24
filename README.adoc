@@ -1,0 +1,60 @@
+////
+// Licensed under the Apache License, Version 2.0 (the "License");
+// you may not use this file except in compliance with the License.
+// You may obtain a copy of the License at
+//
+//     https://apache.org/licenses/LICENSE-2.0
+//
+// Unless required by applicable law or agreed to in writing, software
+// distributed under the License is distributed on an "AS IS" BASIS,
+// WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+// See the License for the specific language governing permissions and
+// limitations under the License.
+////
+= Example of distributed vulnerability handling
+:base-url: https://github.com/copernik-eu/vexation/blob/main
+
+This repository contains an example of
+https://cyclonedx.org/capabilities/vdr/[CycloneDX Vulnerability Disclosure Reports]
+and
+https://cyclonedx.org/capabilities/vex/[CycloneDX Vulnerability Exploitability Exchanges]
+usage to help a Java application (https://kafka.apache.org/[Apache Kafka]) handle vulnerabilities in its dependencies.
+
+Most Java applications are distributed together with **all** their dependencies (e.g., as WAR archives).
+Whenever a vulnerability is discovered in a dependency, the project must decide whether it needs to immediately make a new release or not.
+Since most dependencies are Open Source, it is obviously possible for each application to analyze its usage of the faulty dependency, but this:
+
+* adds a lot of work to application maintainers.
+* requires application maintainers to analyze code they are not familiar with.
+
+In this example, we show how we could offload some of the security analysis work from application developers by promoting the usage of VEX files in their dependencies.
+
+== Selected dependency chain
+
+Kafka 4.0 will use Log4j Core 2 as logging backend and will https://issues.apache.org/jira/browse/KAFKA-17889[ship with a default `log4j2.yaml` configuration].
+This change will introduce a new front of possibly exploitable vulnerabilities, since all future SnakeYAML CVEs could potentially be exploitable in Kafka.
+
+This repo contains a preliminary analysis on how **past** SnakeYAML vulnerabilities might have affected Kafka:
+
+{base-url}/vdr/snakeyaml.vdr.xml[`snakeyaml.vdr.xml`]::
++
+The `snakeyaml.vdr.xml` file contains a list of all 8 known SnakeYAML vulnerabilities up to today in CycloneDX format.
+
+{base-url}/vex/jackson.vex.xml[`jackson.vex.xml`]::
++
+The only Kafka dependency that uses SnakeYAML is
+https://github.com/FasterXML/jackson-dataformats-text/tree/2.19/yaml[`jackson-dataformat-yaml`].
+The `jackson.vex.xml` file contains an impact analysis of SnakeYAML vulnerabilities on Jackson Dataformat YAML.
+https://nvd.nist.gov/vuln/detail/CVE-2022-1471[CVE-2022-1471] does not affect Jackson Dataformat YAML because the vulnerable code is not used.
+This leaves downstream projects with only 7 vulnerabilities to worry about.
+
+{base-url}/vex/log4j-core.vex.xml[`log4j-core.vex.xml`]::
++
+Log4j Core uses Jackson Dataformat YAML for YAML parsing.
+However, it uses YAML only for configuration files, which need to come from a **trusted** source.
+This allows use to discard all remaining SnakeYAML vulnerabilities in the `log4j-core.vex.xml` file.
+
+{base-url}/vex/kafka.vex.xml[`kafka.vex.xml`]::
++
+The three files above allow Kafka developers to rapidly discard all the SnakeYAML vulnerabilities as "not exploitable".
+This is done in the `kafka.vex.xml` file.

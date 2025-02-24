@@ -11,7 +11,7 @@
 # limitations under the License.
 import os
 import sys
-from datetime import datetime
+from datetime import datetime, UTC
 from decimal import Decimal
 
 from cyclonedx.model import XsUri, InvalidUriException
@@ -37,8 +37,9 @@ def main(cve_list: List[str]) -> int:
 def parse_nvd_vulnerability(vulnerability: Dict) -> Vulnerability:
     cve: Dict = vulnerability["cve"]
     v_id: str = cve["id"]
-    v_published: datetime = datetime.fromisoformat(cve["published"])
-    v_last_modified: datetime = datetime.fromisoformat(cve["lastModified"])
+    # Timestamps don't have a time zone, assume UTC
+    v_published: datetime = datetime.fromtimestamp(cve["published"], UTC)
+    v_last_modified: datetime = datetime.fromtimestamp(cve["lastModified"], UTC)
     v_desc: Optional[str] = next((desc["value"] for desc in cve["descriptions"] if desc["lang"] == "en"), None)
     v_metrics: Optional[Dict] = cve.get("metrics")
     v_ratings: List[VulnerabilityRating] = [] if v_metrics is None else parse_nvd_metrics(v_metrics)

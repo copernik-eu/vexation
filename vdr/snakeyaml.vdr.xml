@@ -1,11 +1,8 @@
-<?xml version="1.0" ?>
+<?xml version="1.0" encoding="UTF-8"?>
 <bom xmlns="http://cyclonedx.org/schema/bom/1.6"
      xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
      xsi:schemaLocation="http://cyclonedx.org/schema/bom/1.6 https://cyclonedx.org/schema/bom-1.6.xsd"
      serialNumber="urn:uuid:2b86ae08-020c-42c0-b713-427968a7453e">
-  <metadata>
-    <timestamp>2025-02-23T21:57:17.725307+00:00</timestamp>
-  </metadata>
   <components>
     <component type="library" bom-ref="pkg:maven/org.yaml/snakeyaml">
       <manufacturer>
@@ -52,14 +49,15 @@
       <recommendation>
         Users that parse untrusted YAML files should upgrade to version 1.26 or later.
       </recommendation>
-      <published>2019-12-12T03:15:10.850000+01:00</published>
-      <updated>2024-11-21T03:20:32.813000+01:00</updated>
+      <published>2019-12-12T03:15:10.850Z</published>
+      <updated>2024-11-21T03:20:32.813Z</updated>
       <affects>
         <target>
           <ref>pkg:maven/org.yaml/snakeyaml</ref>
           <versions>
             <version>
               <range>vers:maven/&lt;1.26</range>
+              <status>affected</status>
             </version>
           </versions>
         </target>
@@ -99,14 +97,15 @@
         We recommend using SnakeYAML's `SafeConstructor` when parsing untrusted content to restrict deserialization.
         We recommend upgrading to version 2.0 and beyond.
       </recommendation>
-      <published>2022-12-01T11:15:10.553000+01:00</published>
-      <updated>2025-02-13T17:15:35.627000+01:00</updated>
+      <published>2022-12-01T11:15:10.553Z</published>
+      <updated>2025-02-13T17:15:35.627Z</updated>
       <affects>
         <target>
           <ref>pkg:maven/org.yaml/snakeyaml</ref>
           <versions>
             <version>
               <range>vers:maven/&lt;2</range>
+              <status>affected</status>
             </version>
           </versions>
         </target>
@@ -145,14 +144,15 @@
       <recommendation>
         Users that parse untrusted YAML files should upgrade to version 1.31 or later.
       </recommendation>
-      <published>2022-08-30T05:15:07.667000+02:00</published>
-      <updated>2024-11-21T06:53:07.563000+01:00</updated>
+      <published>2022-08-30T05:15:07.667Z</published>
+      <updated>2024-11-21T06:53:07.563Z</updated>
       <affects>
         <target>
           <ref>pkg:maven/org.yaml/snakeyaml</ref>
           <versions>
             <version>
               <range>vers:maven/&lt;1.31</range>
+              <status>affected</status>
             </version>
           </versions>
         </target>
@@ -192,14 +192,15 @@
       <recommendation>
         Users that parse untrusted YAML files should upgrade to version 1.31 or later.
       </recommendation>
-      <published>2022-09-05T10:15:09.673000+02:00</published>
-      <updated>2024-11-21T07:17:01.060000+01:00</updated>
+      <published>2022-09-05T10:15:09.673Z</published>
+      <updated>2024-11-21T07:17:01.060Z</updated>
       <affects>
         <target>
           <ref>pkg:maven/org.yaml/snakeyaml</ref>
           <versions>
             <version>
               <range>vers:maven/&lt;1.31</range>
+              <status>affected</status>
             </version>
           </versions>
         </target>
@@ -239,14 +240,15 @@
       <recommendation>
         Users that parse untrusted YAML files should upgrade to version 1.31 or later.
       </recommendation>
-      <published>2022-09-05T10:15:09.733000+02:00</published>
-      <updated>2024-11-21T07:17:01.207000+01:00</updated>
+      <published>2022-09-05T10:15:09.733Z</published>
+      <updated>2024-11-21T07:17:01.207Z</updated>
       <affects>
         <target>
           <ref>pkg:maven/org.yaml/snakeyaml</ref>
           <versions>
             <version>
               <range>vers:maven/&lt;1.31</range>
+              <status>affected</status>
             </version>
           </versions>
         </target>
@@ -286,14 +288,15 @@
       <recommendation>
         Users that parse untrusted YAML files should upgrade to version 1.31 or later.
       </recommendation>
-      <published>2022-09-05T10:15:09.793000+02:00</published>
-      <updated>2024-11-21T07:17:01.357000+01:00</updated>
+      <published>2022-09-05T10:15:09.793Z</published>
+      <updated>2024-11-21T07:17:01.357Z</updated>
       <affects>
         <target>
           <ref>pkg:maven/org.yaml/snakeyaml</ref>
           <versions>
             <version>
               <range>vers:maven/&lt;1.31</range>
+              <status>affected</status>
             </version>
           </versions>
         </target>
@@ -333,14 +336,15 @@
       <recommendation>
         Users that parse untrusted YAML files should upgrade to version 1.32 or later.
       </recommendation>
-      <published>2022-09-05T10:15:09.847000+02:00</published>
-      <updated>2024-11-21T07:17:01.483000+01:00</updated>
+      <published>2022-09-05T10:15:09.847Z</published>
+      <updated>2024-11-21T07:17:01.483Z</updated>
       <affects>
         <target>
           <ref>pkg:maven/org.yaml/snakeyaml</ref>
           <versions>
             <version>
               <range>vers:maven/&lt;1.32</range>
+              <status>affected</status>
             </version>
           </versions>
         </target>
@@ -379,14 +383,15 @@
       <recommendation>
         Users that parse untrusted YAML files should upgrade to version 1.32 or later.
       </recommendation>
-      <published>2022-11-11T13:15:11.003000+01:00</published>
-      <updated>2024-11-21T07:23:56.797000+01:00</updated>
+      <published>2022-11-11T13:15:11.003Z</published>
+      <updated>2024-11-21T07:23:56.797Z</updated>
       <affects>
         <target>
           <ref>pkg:maven/org.yaml/snakeyaml</ref>
           <versions>
             <version>
               <range>vers:maven/&lt;1.32</range>
+              <status>affected</status>
             </version>
           </versions>
         </target>

@@ -1,0 +1,361 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<bom xmlns="http://cyclonedx.org/schema/bom/1.6"
+     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+     xsi:schemaLocation="http://cyclonedx.org/schema/bom/1.6 https://cyclonedx.org/schema/bom-1.6.xsd"
+     serialNumber="urn:uuid:52050d01-10d5-48bc-a866-6a8e178b92dd">
+  <components>
+    <component type="library" bom-ref="pkg:maven/com.fasterxml.jackson.dataformat/jackson-dataformat-yaml">
+      <manufacturer>
+        <name>Jackson Project</name>
+        <url>https://github.com/FasterXML/jackson</url>
+      </manufacturer>
+      <group>com.fasterxml.jackson.dataformat</group>
+      <name>jackson-dataformat-yaml</name>
+      <cpe>cpe:2.3:a:fasterxml:jackson-dataformats-text:*:*:*:*:*:*:*:*</cpe>
+      <purl>pkg:maven/com.fasterxml.jackson.dataformat/jackson-dataformat-yaml</purl>
+    </component>
+  </components>
+  <vulnerabilities>
+    <vulnerability bom-ref="CVE-2017-18640">
+      <id>CVE-2017-18640</id>
+      <description>
+        Using SnakeYAML to parse untrusted YAML files may be vulnerable to Denial of Service attacks (DOS).
+        The alias feature in SnakeYAML before 1.26 allows entity expansion during a load operation, a related
+        issue to CVE-2003-1564 (Billion Laughs Attack).
+      </description>
+      <analysis>
+        <state>exploitable</state>
+        <responses>
+          <response>workaround_available</response>
+        </responses>
+        <detail>
+          This vulnerability is exploitable in `jackson-dataformat-yaml` if:
+
+          * `snakeyaml` before 1.26 is used.
+          * `jackson-dataformat-yaml` is used to parse untrusted YAML files.
+
+          Versions of `jackson-dataformat-yaml` prior to 2.5 do not use SnakeYAML and are therefore unaffected.
+          Since version 2.10.4 of `jackson-dataformat-yaml` the recommended `snakeyaml` version is 1.26 or higher,
+          therefore it is not affected by default.
+          Users of versions between 2.5 and 2.10.3 are recommended to manually pin their `snakeyaml` version to 1.26 or
+          higher.
+        </detail>
+      </analysis>
+      <affects>
+        <target>
+          <ref>pkg:maven/com.fasterxml.jackson.dataformat/jackson-dataformat-yaml</ref>
+          <versions>
+            <version>
+              <range>vers:maven/&lt;2.5</range>
+              <status>unaffected</status>
+            </version>
+            <version>
+              <range>vers:maven/&gt;=2.5|&lt;2.10.4</range>
+              <status>affected</status>
+            </version>
+            <version>
+              <range>vers:maven/&gt;=2.10.4</range>
+              <status>unknown</status>
+            </version>
+          </versions>
+        </target>
+      </affects>
+    </vulnerability>
+    <vulnerability bom-ref="CVE-2022-1471">
+      <id>CVE-2022-1471</id>
+      <description>
+        SnakeYaml's `Constructor` class does not restrict types which can be instantiated during deserialization.
+        Deserializing YAML content provided by an attacker can lead to remote code execution.
+      </description>
+      <analysis>
+        <state>not_affected</state>
+        <justification>code_not_reachable</justification>
+        <detail>
+          Call site analysis shows that the `Constructor` class is never used by `jackson-dataformat-yaml`.
+
+          See: https://github.com/FasterXML/jackson-dataformats-text/issues/361
+        </detail>
+      </analysis>
+      <affects>
+        <target>
+          <ref>pkg:maven/com.fasterxml.jackson.dataformat/jackson-dataformat-yaml</ref>
+          <versions>
+            <version>
+              <range>vers:maven/&gt;=2</range>
+              <status>unaffected</status>
+            </version>
+          </versions>
+        </target>
+      </affects>
+    </vulnerability>
+    <vulnerability bom-ref="CVE-2022-25857">
+      <id>CVE-2022-25857</id>
+      <description>
+        Using SnakeYAML to parse untrusted YAML files may be vulnerable to Denial of Service attacks (DOS).
+        SnakeYAML versions before 1.31 are vulnerable to Denial of Service (DoS) due missing to nested depth limitation
+        for collections.
+      </description>
+      <analysis>
+        <state>exploitable</state>
+        <responses>
+          <response>workaround_available</response>
+        </responses>
+        <detail>
+          This vulnerability is exploitable in `jackson-dataformat-yaml` if:
+
+          * `snakeyaml` before 1.31 is used.
+          * `jackson-dataformat-yaml` is used to parse untrusted YAML files.
+
+          Versions of `jackson-dataformat-yaml` prior to 2.5 do not use SnakeYAML and are therefore unaffected.
+          Since version 2.13.4 of `jackson-dataformat-yaml` the recommended `snakeyaml` version is 1.31 or higher,
+          therefore it is not affected by default.
+          Users of versions between 2.5 and 2.13.4 are recommended to manually pin their `snakeyaml` version to 1.31 or
+          higher.
+        </detail>
+      </analysis>
+      <affects>
+        <target>
+          <ref>pkg:maven/com.fasterxml.jackson.dataformat/jackson-dataformat-yaml</ref>
+          <versions>
+            <version>
+              <range>vers:maven/&lt;2.5</range>
+              <status>unaffected</status>
+            </version>
+            <version>
+              <range>vers:maven/&gt;=2.5|&lt;2.13.4</range>
+              <status>affected</status>
+            </version>
+            <version>
+              <range>vers:maven/&gt;=2.13.4</range>
+              <status>unknown</status>
+            </version>
+          </versions>
+        </target>
+      </affects>
+    </vulnerability>
+    <vulnerability bom-ref="CVE-2022-38749">
+      <id>CVE-2022-38749</id>
+      <description>
+        Using SnakeYAML to parse untrusted YAML files may be vulnerable to Denial of Service attacks (DOS).
+        If the parser is running on user supplied input, an attacker may supply content that causes the parser to crash
+        by stack overflow.
+      </description>
+      <analysis>
+        <state>exploitable</state>
+        <responses>
+          <response>workaround_available</response>
+        </responses>
+        <detail>
+          This vulnerability is exploitable in `jackson-dataformat-yaml` if:
+
+          * `snakeyaml` before 1.31 is used.
+          * `jackson-dataformat-yaml` is used to parse untrusted YAML files.
+
+          Versions of `jackson-dataformat-yaml` prior to 2.5 do not use SnakeYAML and are therefore unaffected.
+          Since version 2.13.4 of `jackson-dataformat-yaml` the recommended `snakeyaml` version is 1.31 or higher,
+          therefore it is not affected by default.
+          Users of versions between 2.5 and 2.13.4 are recommended to manually pin their `snakeyaml` version to 1.31 or
+          higher.
+        </detail>
+      </analysis>
+      <affects>
+        <target>
+          <ref>pkg:maven/com.fasterxml.jackson.dataformat/jackson-dataformat-yaml</ref>
+          <versions>
+            <version>
+              <range>vers:maven/&lt;2.5</range>
+              <status>unaffected</status>
+            </version>
+            <version>
+              <range>vers:maven/&gt;=2.5|&lt;2.13.4</range>
+              <status>affected</status>
+            </version>
+            <version>
+              <range>vers:maven/&gt;=2.13.4</range>
+              <status>unknown</status>
+            </version>
+          </versions>
+        </target>
+      </affects>
+    </vulnerability>
+    <vulnerability bom-ref="CVE-2022-38750">
+      <id>CVE-2022-38750</id>
+      <description>
+        Using SnakeYAML to parse untrusted YAML files may be vulnerable to Denial of Service attacks (DOS).
+        If the parser is running on user supplied input, an attacker may supply content that causes the parser to crash
+        by stack overflow.
+      </description>
+      <analysis>
+        <state>exploitable</state>
+        <responses>
+          <response>workaround_available</response>
+        </responses>
+        <detail>
+          This vulnerability is exploitable in `jackson-dataformat-yaml` if:
+
+          * `snakeyaml` before 1.31 is used.
+          * `jackson-dataformat-yaml` is used to parse untrusted YAML files.
+
+          Versions of `jackson-dataformat-yaml` prior to 2.5 do not use SnakeYAML and are therefore unaffected.
+          Since version 2.13.4 of `jackson-dataformat-yaml` the recommended `snakeyaml` version is 1.31 or higher,
+          therefore it is not affected by default.
+          Users of versions between 2.5 and 2.13.4 are recommended to manually pin their `snakeyaml` version to 1.31 or
+          higher.
+        </detail>
+      </analysis>
+      <affects>
+        <target>
+          <ref>pkg:maven/com.fasterxml.jackson.dataformat/jackson-dataformat-yaml</ref>
+          <versions>
+            <version>
+              <range>vers:maven/&lt;2.5</range>
+              <status>unaffected</status>
+            </version>
+            <version>
+              <range>vers:maven/&gt;=2.5|&lt;2.13.4</range>
+              <status>affected</status>
+            </version>
+            <version>
+              <range>vers:maven/&gt;=2.13.4</range>
+              <status>unknown</status>
+            </version>
+          </versions>
+        </target>
+      </affects>
+    </vulnerability>
+    <vulnerability bom-ref="CVE-2022-38751">
+      <id>CVE-2022-38751</id>
+      <description>
+        Using SnakeYAML to parse untrusted YAML files may be vulnerable to Denial of Service attacks (DOS).
+        If the parser is running on user supplied input, an attacker may supply content that causes the parser to crash
+        by stack overflow.
+      </description>
+      <analysis>
+        <state>exploitable</state>
+        <responses>
+          <response>workaround_available</response>
+        </responses>
+        <detail>
+          This vulnerability is exploitable in `jackson-dataformat-yaml` if:
+
+          * `snakeyaml` before 1.31 is used.
+          * `jackson-dataformat-yaml` is used to parse untrusted YAML files.
+
+          Versions of `jackson-dataformat-yaml` prior to 2.5 do not use SnakeYAML and are therefore unaffected.
+          Since version 2.13.4 of `jackson-dataformat-yaml` the recommended `snakeyaml` version is 1.31 or higher,
+          therefore it is not affected by default.
+          Users of versions between 2.5 and 2.13.4 are recommended to manually pin their `snakeyaml` version to 1.31 or
+          higher.
+        </detail>
+      </analysis>
+      <affects>
+        <target>
+          <ref>pkg:maven/com.fasterxml.jackson.dataformat/jackson-dataformat-yaml</ref>
+          <versions>
+            <version>
+              <range>vers:maven/&lt;2.5</range>
+              <status>unaffected</status>
+            </version>
+            <version>
+              <range>vers:maven/&gt;=2.5|&lt;2.13.4</range>
+              <status>affected</status>
+            </version>
+            <version>
+              <range>vers:maven/&gt;=2.13.4</range>
+              <status>unknown</status>
+            </version>
+          </versions>
+        </target>
+      </affects>
+    </vulnerability>
+    <vulnerability bom-ref="CVE-2022-38752">
+      <id>CVE-2022-38752</id>
+      <description>
+        Using SnakeYAML to parse untrusted YAML files may be vulnerable to Denial of Service attacks (DOS).
+        If the parser is running on user supplied input, an attacker may supply content that causes the parser to crash
+        by stack overflow.
+      </description>
+      <analysis>
+        <state>exploitable</state>
+        <responses>
+          <response>workaround_available</response>
+        </responses>
+        <detail>
+          This vulnerability is exploitable in `jackson-dataformat-yaml` if:
+
+          * `snakeyaml` before 1.32 is used.
+          * `jackson-dataformat-yaml` is used to parse untrusted YAML files.
+
+          Versions of `jackson-dataformat-yaml` prior to 2.5 do not use SnakeYAML and are therefore unaffected.
+          Since version 2.14.0 of `jackson-dataformat-yaml` the recommended `snakeyaml` version is 1.33 or higher,
+          therefore it is not affected by default.
+          Users of versions between 2.5 and 2.13.5 are recommended to manually pin their `snakeyaml` version to 1.32 or
+          higher.
+        </detail>
+      </analysis>
+      <affects>
+        <target>
+          <ref>pkg:maven/com.fasterxml.jackson.dataformat/jackson-dataformat-yaml</ref>
+          <versions>
+            <version>
+              <range>vers:maven/&lt;2.5</range>
+              <status>unaffected</status>
+            </version>
+            <version>
+              <range>vers:maven/&gt;=2.5|&lt;2.14.0</range>
+              <status>affected</status>
+            </version>
+            <version>
+              <range>vers:maven/&gt;=2.14.0</range>
+              <status>unknown</status>
+            </version>
+          </versions>
+        </target>
+      </affects>
+    </vulnerability>
+    <vulnerability bom-ref="CVE-2022-41854">
+      <id>CVE-2022-41854</id>
+      <description>Using SnakeYAML to parse untrusted YAML files may be vulnerable to Denial of Service attacks (DOS).
+        If the parser is running on user supplied input, an attacker may supply content that causes the parser to
+        crash by stack overflow. This effect may support a denial of service attack.
+      </description>
+      <analysis>
+        <state>exploitable</state>
+        <responses>
+          <response>workaround_available</response>
+        </responses>
+        <detail>
+          This vulnerability is exploitable in `jackson-dataformat-yaml` if:
+
+          * `snakeyaml` before 1.32 is used.
+          * `jackson-dataformat-yaml` is used to parse untrusted YAML files.
+
+          Versions of `jackson-dataformat-yaml` prior to 2.5 do not use SnakeYAML and are therefore unaffected.
+          Since version 2.14.0 of `jackson-dataformat-yaml` the recommended `snakeyaml` version is 1.33 or higher,
+          therefore it is not affected by default.
+          Users of versions between 2.5 and 2.13.5 are recommended to manually pin their `snakeyaml` version to 1.32 or
+          higher.
+        </detail>
+      </analysis>
+      <affects>
+        <target>
+          <ref>pkg:maven/com.fasterxml.jackson.dataformat/jackson-dataformat-yaml</ref>
+          <versions>
+            <version>
+              <range>vers:maven/&lt;2.5</range>
+              <status>unaffected</status>
+            </version>
+            <version>
+              <range>vers:maven/&gt;=2.5|&lt;2.14.0</range>
+              <status>affected</status>
+            </version>
+            <version>
+              <range>vers:maven/&gt;=2.14.0</range>
+              <status>unknown</status>
+            </version>
+          </versions>
+        </target>
+      </affects>
+    </vulnerability>
+  </vulnerabilities>
+</bom>
