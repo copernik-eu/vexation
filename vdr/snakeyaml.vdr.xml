@@ -42,12 +42,21 @@
         <cwe>776</cwe>
       </cwes>
       <description>
-        Using SnakeYAML to parse untrusted YAML files may be vulnerable to Denial of Service attacks (DOS).
-        The alias feature in SnakeYAML before 1.26 allows entity expansion during a load operation, a related
-        issue to CVE-2003-1564 (Billion Laughs Attack).
+        SnakeYAML `Constructor` allows the creation of deeply nested structures that can cause a Service attack (DOS),
+        if expanded.
+        An attacker can craft a special YAML document, similar to CVE-2003-1564 (Billion Laughs Attack).
+        Expansion of this document (e.g., via `Object#toString`) can cause excessive resource consumption.
+
+        Entry points:
+        * org.yaml.snakeyaml.Yaml#load
+        * org.yaml.snakeyaml.Yaml#loadAs
+        * org.yaml.snakeyaml.Yaml#loadAll
+        * org.yaml.snakeyaml.constructor.BaseConstructor#getData
+        * org.yaml.snakeyaml.constructor.BaseConstructor#getSingleData
       </description>
       <recommendation>
-        Users that parse untrusted YAML files should upgrade to version 1.26 or later.
+        Users that parse untrusted YAML files should upgrade to version 1.26 or later, which introduces a limit to the number of aliases in collections.
+        See https://javadoc.io/static/org.yaml/snakeyaml/1.33/org/yaml/snakeyaml/LoaderOptions.html#setMaxAliasesForCollections-int-
       </recommendation>
       <published>2019-12-12T03:15:10.850Z</published>
       <updated>2024-11-21T03:20:32.813Z</updated>
@@ -92,6 +101,9 @@
       <description>
         SnakeYaml's `Constructor` class does not restrict types which can be instantiated during deserialization.
         Deserializing YAML content provided by an attacker can lead to remote code execution.
+
+        Entry points:
+        * org.yaml.snakeyaml.constructor.Constructor.&lt;init&gt;
       </description>
       <recommendation>
         We recommend using SnakeYAML's `SafeConstructor` when parsing untrusted content to restrict deserialization.

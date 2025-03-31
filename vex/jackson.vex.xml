@@ -19,26 +19,23 @@
     <vulnerability bom-ref="CVE-2017-18640">
       <id>CVE-2017-18640</id>
       <description>
-        Using SnakeYAML to parse untrusted YAML files may be vulnerable to Denial of Service attacks (DOS).
-        The alias feature in SnakeYAML before 1.26 allows entity expansion during a load operation, a related
-        issue to CVE-2003-1564 (Billion Laughs Attack).
+        SnakeYAML `Constructor` allows the creation of deeply nested structures that can cause a Service attack (DOS),
+        if expanded.
+        An attacker can craft a special YAML document, similar to CVE-2003-1564 (Billion Laughs Attack).
+        Expansion of this document (e.g., via `Object#toString`) can cause excessive resource consumption.
+
+        Entry points:
+        * org.yaml.snakeyaml.Yaml#load
+        * org.yaml.snakeyaml.Yaml#loadAs
+        * org.yaml.snakeyaml.Yaml#loadAll
+        * org.yaml.snakeyaml.constructor.BaseConstructor#getData
+        * org.yaml.snakeyaml.constructor.BaseConstructor#getSingleData
       </description>
       <analysis>
-        <state>exploitable</state>
-        <responses>
-          <response>workaround_available</response>
-        </responses>
+        <state>not_affected</state>
+        <justification>code_not_reachable</justification>
         <detail>
-          This vulnerability is exploitable in `jackson-dataformat-yaml` if:
-
-          * `snakeyaml` before 1.26 is used.
-          * `jackson-dataformat-yaml` is used to parse untrusted YAML files.
-
-          Versions of `jackson-dataformat-yaml` prior to 2.5 do not use SnakeYAML and are therefore unaffected.
-          Since version 2.10.4 of `jackson-dataformat-yaml` the recommended `snakeyaml` version is 1.26 or higher,
-          therefore it is not affected by default.
-          Users of versions between 2.5 and 2.10.3 are recommended to manually pin their `snakeyaml` version to 1.26 or
-          higher.
+          Call site analysis shows that the `BaseConstructor` and `Yaml` classes are never used by `jackson-dataformat-yaml`.
         </detail>
       </analysis>
       <affects>
@@ -46,16 +43,8 @@
           <ref>pkg:maven/com.fasterxml.jackson.dataformat/jackson-dataformat-yaml</ref>
           <versions>
             <version>
-              <range>vers:maven/&lt;2.5</range>
+              <range>vers:maven/&gt;=2</range>
               <status>unaffected</status>
-            </version>
-            <version>
-              <range>vers:maven/&gt;=2.5|&lt;2.10.4</range>
-              <status>affected</status>
-            </version>
-            <version>
-              <range>vers:maven/&gt;=2.10.4</range>
-              <status>unknown</status>
             </version>
           </versions>
         </target>
