@@ -29,18 +29,25 @@
     <vulnerability bom-ref="CVE-2017-18640">
       <id>CVE-2017-18640</id>
       <description>
-        Using SnakeYAML to parse untrusted YAML files may be vulnerable to Denial of Service attacks (DOS).
-        The alias feature in SnakeYAML before 1.26 allows entity expansion during a load operation, a related
-        issue to CVE-2003-1564 (Billion Laughs Attack).
+        SnakeYAML `Constructor` allows the creation of deeply nested structures that can cause a Service attack (DOS),
+        if expanded.
+        An attacker can craft a special YAML document, similar to CVE-2003-1564 (Billion Laughs Attack).
+        Expansion of this document (e.g., via `Object#toString`) can cause excessive resource consumption.
+
+        Entry points:
+        * org.yaml.snakeyaml.Yaml#load
+        * org.yaml.snakeyaml.Yaml#loadAs
+        * org.yaml.snakeyaml.Yaml#loadAll
+        * org.yaml.snakeyaml.constructor.BaseConstructor#getData
+        * org.yaml.snakeyaml.constructor.BaseConstructor#getSingleData
       </description>
       <analysis>
         <state>not_affected</state>
         <detail>
-          Log4j Core only uses the YAML parser for configuration files. According to our
-          [threat model](https://logging.apache.org/security.html#threat-common), it is up to the users to ensure that
-          configuration files come from trusted sources.
+          The only direct dependency of Log4j Core that uses SnakeYAML is `jackson-dataformat-yaml`.
+          According to their VEX statement, this vulnerability is not exploitable.
 
-          Therefore, this CVE does not affect Log4j Core.
+          See: jackson.vex.xml
         </detail>
       </analysis>
       <affects>
